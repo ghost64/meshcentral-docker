@@ -2,7 +2,7 @@ name: Publish Image
 
 on:
   schedule:
-    - cron: '0 12 * * *'
+    - cron: '0 0 * * 0'
   workflow_dispatch:
 
 env:
@@ -30,16 +30,16 @@ jobs:
             echo "Version override detected. Setting version to ${{ env.VERSION_OVERRIDE_NUMBER }}"
             VERSION=${{ env.VERSION_OVERRIDE_NUMBER }}
           fi
-          echo "::set-output name=VERSION::$VERSION"
-          echo "::set-output name=STABLE_VERSION::$STABLE_VERSION"
+          echo "{VERSION}={$VERSION}" >> $GITHUB_OUTPUT
+          echo "{STABLE_VERSION}={$STABLE_VERSION}" >> $GITHUB_OUTPUT
 
           echo $VERSION
           echo $STABLE_VERSION
           # check if version has already been published
-          $(docker manifest inspect ghcr.io/gurucomputing/meshcentral-docker:$VERSION > /dev/null) || NOT_PREVIOUSLY_PUBLISHED=1
-          echo "::set-output name=NOT_PREVIOUSLY_PUBLISHED::$NOT_PREVIOUSLY_PUBLISHED"
+          $(docker manifest inspect ghcr.io/ghost64/meshcentral-docker:$VERSION > /dev/null) || NOT_PREVIOUSLY_PUBLISHED=1
+          echo "{NOT_PREVIOUSLY_PUBLISHED}={$NOT_PREVIOUSLY_PUBLISHED}" >> $GITHUB_OUTPUT
           # get a current BUILD_DATE
-          echo "::set-output name=BUILD_DATE::$(date +%Y%m%d-%H%M%S)"
+          echo "{BUILD_DATE}={$(date +%Y%m%d-%H%M%S)}" >> $GITHUB_OUTPUT
 
       - name: Output Version
         run: |
