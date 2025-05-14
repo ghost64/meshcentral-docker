@@ -1,10 +1,8 @@
 # Meshcentral Docker
 Repository for building meshcentral images in docker
 ```
-docker run -p 80:80 -p 443:443 ghcr.io/gurucomputing/meshcentral-docker
+docker run -p 80:80 -p 443:443 ghcr.io/ghost64/meshcentral-docker
 ```
-
-![readme-gif](assets/readme-gif.gif)
 
 ## Meshcentral Summary
 Meshcentral is a remote management and monitoring (RMM) system designed to run in a web browser. Meshcentral supports Linux, Windows, MacOS, and (to a certain extent) Android.
@@ -78,7 +76,7 @@ version: '2'
 services:
   meshcentral:
     container_name: meshcentral
-    image: ghcr.io/gurucomputing/meshcentral-docker:latest
+    image: ghcr.io/ghost64/meshcentral-docker:latest
     restart: "always"
     volumes:
       - ./container-data/meshcentral-data:/meshcentral/meshcentral-data
@@ -98,7 +96,7 @@ version: '2'
 services:
   meshcentral:
     container_name: meshcentral
-    image: ghcr.io/gurucomputing/meshcentral-docker:latest
+    image: ghcr.io/ghost64/meshcentral-docker:latest
     restart: "always"
     volumes:
       - ./container-data/meshcentral-data:/meshcentral/meshcentral-data
@@ -145,7 +143,7 @@ version: '2'
 services:
   meshcentral:
     container_name: meshcentral
-    image: ghcr.io/gurucomputing/meshcentral-docker:latest
+    image: ghcr.io/ghost64/meshcentral-docker:latest
     restart: "always"
     volumes:
       - ./container-data/meshcentral-data:/meshcentral/meshcentral-data

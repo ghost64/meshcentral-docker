@@ -3,7 +3,7 @@ version: '2'
 services:
   meshcentral:
     container_name: meshcentral
-    image: ghcr.io/gurucomputing/meshcentral-docker:latest
+    image: ghcr.io/ghost64/meshcentral-docker:latest
     restart: "always"
     volumes:
       - ./container-data/meshcentral-data:/meshcentral/meshcentral-data
